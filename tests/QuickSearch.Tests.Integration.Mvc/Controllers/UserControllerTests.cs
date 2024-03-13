@@ -1,4 +1,3 @@
-using QuickSearch.Models;
 using QuickSearch.Tests.Api.Common.Data;
 using QuickSearch.Tests.Api.Common.Data.Generators;
 using QuickSearch.Tests.Api.Common.Data.Models;
@@ -7,6 +6,7 @@ using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System.Net.Http.Json;
+using QuickSearch.Pagination;
 
 namespace QuickSearch.Tests.Integration.Mvc.Controllers;
 

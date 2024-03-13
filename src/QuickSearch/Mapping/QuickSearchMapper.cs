@@ -1,4 +1,5 @@
-﻿using QuickSearch.Options;
+﻿using QuickSearch.Filter;
+using QuickSearch.Sort;
 
 namespace QuickSearch.Mapping;
 

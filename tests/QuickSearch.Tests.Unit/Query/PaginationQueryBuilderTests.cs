@@ -1,6 +1,8 @@
 ﻿using Bogus;
-using QuickSearch.Options;
+using QuickSearch.Filter;
+using QuickSearch.Pagination;
 using QuickSearch.Query;
+using QuickSearch.Sort;
 
 namespace QuickSearch.Tests.Unit.Query;
 

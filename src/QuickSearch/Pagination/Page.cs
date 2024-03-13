@@ -1,4 +1,4 @@
-﻿namespace QuickSearch.Models;
+﻿namespace QuickSearch.Pagination;
 
 public class Page<TItem> where TItem : class
 {
@@ -6,8 +6,8 @@ public class Page<TItem> where TItem : class
     public int CurrentPage { get; internal set; }
     public int PageSize { get; internal set; }
     public int TotalItems { get; internal set; }
-    public int TotalPages => (int) Math.Ceiling((double)TotalItems / PageSize);
-    
+    public int TotalPages => (int)Math.Ceiling((double)TotalItems / PageSize);
+
     public Page(IEnumerable<TItem> items, int currentPage, int pageSize, int totalItems)
     {
         Items = items;

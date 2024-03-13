@@ -1,4 +1,4 @@
-﻿namespace QuickSearch.Options;
+﻿namespace QuickSearch.Filter;
 
 public class Filter
 {

@@ -1,7 +1,6 @@
 using QuickSearch.Tests.Api.Common.Data;
-using QuickSearch.Extensions;
-using QuickSearch.Options;
 using Microsoft.EntityFrameworkCore;
+using QuickSearch.Pagination;
 
 var builder = WebApplication.CreateBuilder(args);
 

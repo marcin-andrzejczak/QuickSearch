@@ -1,7 +1,6 @@
-﻿using QuickSearch.Options;
-using System.Linq.Expressions;
+﻿using System.Linq.Expressions;
 
-namespace QuickSearch.Extensions;
+namespace QuickSearch.Filter;
 
 public static class QueryableFilteringExtensions
 {
@@ -26,7 +25,7 @@ public static class QueryableFilteringExtensions
             return query;
 
         Expression? queryExpression = null;
-        
+
         foreach (var (key, filters) in filter.Filters)
         {
             var filterGroups = filters.GroupBy(f => f.FilterType);
@@ -37,11 +36,11 @@ public static class QueryableFilteringExtensions
                     continue;
 
                 var filterValues = filterGroup.Select(f => f.Value);
-                var filterBody  = CreateOr(key.Expression, filterValues, filterExpression);
+                var filterBody = CreateOr(key.Expression, filterValues, filterExpression);
 
                 queryExpression = queryExpression is null
                     ? filterBody
-                    : Expression.And(queryExpression, filterBody);   
+                    : Expression.And(queryExpression, filterBody);
             }
         }
 

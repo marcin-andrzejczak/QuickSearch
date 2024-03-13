@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace QuickSearch.Options;
+namespace QuickSearch.Pagination;
 
 public class PageOptions
 {
@@ -21,18 +21,12 @@ public class PageOptions
     public int Size { get; set; } = 25;
 
     internal StringBuilder ToQueryStringBuilder(string prefix)
-        => new StringBuilder()
-            .Append(prefix)
-            .Append('.')
-            .Append(nameof(Number))
-            .Append('=')
-            .Append(Number)
-            .Append('&')
-            .Append(prefix)
-            .Append('.')
-            .Append(nameof(Size))
-            .Append('=')
-            .Append(Size);
+        => ToQueryStringBuilder(new StringBuilder(), prefix);
+
+    internal StringBuilder ToQueryStringBuilder(StringBuilder builder, string prefix)
+        => builder
+            .Append(prefix).Append('.').Append(nameof(Number)).Append('=').Append(Number).Append('&')
+            .Append(prefix).Append('.').Append(nameof(Size)).Append('=').Append(Size);
 
     public string ToQueryString(string prefix)
         => ToQueryStringBuilder(prefix).ToString();
