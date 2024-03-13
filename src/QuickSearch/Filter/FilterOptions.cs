@@ -1,10 +1,11 @@
 ﻿using QuickSearch.Extensions;
 using QuickSearch.Mapping;
+using QuickSearch.Pagination;
 using System.Linq.Expressions;
 using System.Net;
 using System.Text;
 
-namespace QuickSearch.Options;
+namespace QuickSearch.Filter;
 
 public class FilterOptions<TEntity>
     where TEntity : class
@@ -80,11 +81,11 @@ public class FilterOptions<TEntity>
 
         return this;
     }
-
     internal StringBuilder ToQueryStringBuilder(string prefix)
-    {
-        var builder = new StringBuilder();
+        => ToQueryStringBuilder(new StringBuilder(), prefix);
 
+    internal StringBuilder ToQueryStringBuilder(StringBuilder builder, string prefix)
+    {
         var taken = 0;
         var maxElements = Filters.Keys.Count;
         foreach (var (filterKey, filters) in Filters)

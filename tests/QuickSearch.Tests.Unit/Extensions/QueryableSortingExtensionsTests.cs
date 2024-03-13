@@ -1,6 +1,5 @@
 ﻿using Bogus;
-using QuickSearch.Extensions;
-using QuickSearch.Options;
+using QuickSearch.Sort;
 
 namespace QuickSearch.Tests.Unit.Extensions;
 
@@ -19,7 +18,6 @@ public class QueryableSortingExtensionsTests
     }
 
     private readonly IQueryable<User> _users;
-    private readonly Faker _faker;
 
     public QueryableSortingExtensionsTests()
     {
@@ -27,7 +25,6 @@ public class QueryableSortingExtensionsTests
         var accountFaker = new Faker<Account>()
             .RuleFor(a => a.BalanceNullable, f => f.Random.Int());
 
-        _faker = new Faker();
         _users = new Faker<User>()
             .RuleFor(u => u.FirstName, f => f.Person.FirstName)
             .RuleFor(u => u.Account, _ => accountFaker.Generate())

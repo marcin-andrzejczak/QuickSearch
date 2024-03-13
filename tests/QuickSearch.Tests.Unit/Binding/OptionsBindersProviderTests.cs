@@ -1,7 +1,8 @@
 ﻿using QuickSearch.Binding;
-using QuickSearch.Options;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Binders;
+using QuickSearch.Filter;
+using QuickSearch.Sort;
 
 namespace QuickSearch.Tests.Unit.Binding;
 

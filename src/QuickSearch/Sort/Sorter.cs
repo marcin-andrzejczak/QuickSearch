@@ -1,4 +1,4 @@
-﻿namespace QuickSearch.Options;
+﻿namespace QuickSearch.Sort;
 
 public class Sorter
 {

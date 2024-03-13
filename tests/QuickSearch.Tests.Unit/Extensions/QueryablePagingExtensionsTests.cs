@@ -1,7 +1,6 @@
 ﻿using Bogus;
-using QuickSearch.Extensions;
-using QuickSearch.Options;
 using MockQueryable.NSubstitute;
+using QuickSearch.Pagination;
 
 namespace QuickSearch.Tests.Unit.Extensions;
 

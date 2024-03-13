@@ -3,8 +3,7 @@ using BenchmarkDotNet.Configs;
 using BenchmarkDotNet.Order;
 using Bogus;
 using QuickSearch.Benchmark.Data.Models;
-using QuickSearch.Extensions;
-using QuickSearch.Options;
+using QuickSearch.Filter;
 using QuickSearch.Tests.Benchmark.Data;
 
 namespace QuickSearch.Benchmark.Benchmarks.Filtering;

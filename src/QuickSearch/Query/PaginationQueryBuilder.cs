@@ -1,4 +1,6 @@
-﻿using QuickSearch.Options;
+﻿using QuickSearch.Filter;
+using QuickSearch.Pagination;
+using QuickSearch.Sort;
 using System.Text;
 
 namespace QuickSearch.Query;
@@ -43,23 +45,23 @@ public class PaginationQueryBuilder<TEntity>
     {
         var builder = new StringBuilder();
 
-        if (PageOptions is not null)
-            builder.Append(PageOptions.ToQueryStringBuilder(PagePrefix!));
+        if (PageOptions is not null && PagePrefix is not null)
+            PageOptions.ToQueryStringBuilder(builder, PagePrefix);
 
-        if (FilterOptions is not null)
+        if (FilterOptions is not null && FilterPrefix is not null)
         {
             if (builder.Length > 0)
                 builder.Append('&');
 
-            builder.Append(FilterOptions.ToQueryStringBuilder(FilterPrefix!));
+            FilterOptions.ToQueryStringBuilder(builder, FilterPrefix);
         }
 
-        if (SortOptions is not null)
+        if (SortOptions is not null && SortPrefix is not null)
         {
             if (builder.Length > 0)
                 builder.Append('&');
 
-            builder.Append(SortOptions.ToQueryStringBuilder(SortPrefix!));
+            SortOptions.ToQueryStringBuilder(builder, SortPrefix);
         }
 
         return builder.ToString();

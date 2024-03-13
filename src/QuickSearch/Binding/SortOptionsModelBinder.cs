@@ -1,6 +1,5 @@
-﻿using QuickSearch.Options;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
-using System.IO;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
+using QuickSearch.Sort;
 
 namespace QuickSearch.Binding;
 

@@ -1,8 +1,6 @@
-﻿using QuickSearch.Models;
-using QuickSearch.Options;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
-namespace QuickSearch.Extensions;
+namespace QuickSearch.Pagination;
 
 public static class QueryablePagingExtensions
 {
