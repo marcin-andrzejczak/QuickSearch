@@ -1,0 +1,8 @@
+bin/
+obj/
+BenchmarkDotNet.Artifacts/
+
+notes/
+
+.vs/
+.vscode/
