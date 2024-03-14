@@ -1,5 +1,5 @@
 ﻿using Bogus;
-using QuickSearch.Models;
+using QuickSearch.Pagination;
 
 namespace QuickSearch.Tests.Unit.Models;
 

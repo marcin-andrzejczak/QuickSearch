@@ -1,6 +1,5 @@
 ﻿using Bogus;
-using QuickSearch.Extensions;
-using QuickSearch.Options;
+using QuickSearch.Filter;
 
 namespace QuickSearch.Tests.Unit.Extensions;
 

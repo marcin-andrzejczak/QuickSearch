@@ -4,11 +4,10 @@ using BenchmarkDotNet.Order;
 using Bogus;
 using QuickSearch.Benchmark.Data;
 using QuickSearch.Benchmark.Data.Models;
-using QuickSearch.Extensions;
-using QuickSearch.Options;
 using QuickSearch.Tests.Benchmark.Data;
 using Microsoft.EntityFrameworkCore;
 using Testcontainers.MsSql;
+using QuickSearch.Filter;
 
 namespace QuickSearch.Benchmark.Benchmarks.Filtering;
 

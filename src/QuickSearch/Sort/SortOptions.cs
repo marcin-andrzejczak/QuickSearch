@@ -1,10 +1,11 @@
 ﻿using QuickSearch.Extensions;
 using QuickSearch.Mapping;
+using QuickSearch.Pagination;
 using System.Linq.Expressions;
 using System.Net;
 using System.Text;
 
-namespace QuickSearch.Options;
+namespace QuickSearch.Sort;
 
 public class SortOptions<TEntity>
     where TEntity : class
@@ -46,22 +47,17 @@ public class SortOptions<TEntity>
 
         return this;
     }
-
     internal StringBuilder ToQueryStringBuilder(string prefix)
-    {
-        var builder = new StringBuilder();
+        => ToQueryStringBuilder(new StringBuilder(), prefix);
 
+    internal StringBuilder ToQueryStringBuilder(StringBuilder builder, string prefix)
+    {
         var taken = 0;
         var maxElements = Sorters.Keys.Count;
         foreach (var sorter in Sorters)
         {
             var queryValue = WebUtility.UrlEncode(sorter.Value.Direction.ToString());
-            builder
-                .Append(prefix)
-                .Append('.')
-                .Append(sorter.Key.Path)
-                .Append('=')
-                .Append(queryValue);
+            builder.Append(prefix).Append('.').Append(sorter.Key.Path).Append('=').Append(queryValue);
 
             if (++taken < maxElements)
                 builder.Append('&');

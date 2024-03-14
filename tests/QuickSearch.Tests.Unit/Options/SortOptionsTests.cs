@@ -1,4 +1,4 @@
-﻿using QuickSearch.Options;
+﻿using QuickSearch.Sort;
 
 namespace QuickSearch.Tests.Unit.Options;
 

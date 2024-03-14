@@ -1,7 +1,6 @@
-﻿using QuickSearch.Options;
-using System.Linq.Expressions;
+﻿using System.Linq.Expressions;
 
-namespace QuickSearch.Extensions;
+namespace QuickSearch.Sort;
 
 public static class QueryableSortingExtensions
 {
@@ -25,7 +24,7 @@ public static class QueryableSortingExtensions
             query = query.OrderByColumnUsing(sort.Parameter, keys[i].Expression, orderMethod);
         }
 
-        return (IOrderedQueryable<TEntity>) query;
+        return (IOrderedQueryable<TEntity>)query;
     }
 
     private static IOrderedQueryable<TEntity> OrderByColumnUsing<TEntity>(
@@ -44,7 +43,7 @@ public static class QueryableSortingExtensions
             Expression.Quote(keySelector)
         );
 
-        return (IOrderedQueryable<TEntity>) source.Provider.CreateQuery(methodCall);
+        return (IOrderedQueryable<TEntity>)source.Provider.CreateQuery(methodCall);
     }
 
     private static string GetOrderMethod(int expressionIndex, SortDirection direction)

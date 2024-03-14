@@ -1,11 +1,11 @@
 using QuickSearch.Tests.Api.Common.Data;
 using QuickSearch.Tests.Api.Common.Data.Models;
 using QuickSearch.Tests.Api.Common.Dtos;
-using QuickSearch.Extensions;
-using QuickSearch.Models;
-using QuickSearch.Options;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using QuickSearch.Filter;
+using QuickSearch.Sort;
+using QuickSearch.Pagination;
 
 namespace QuickSearch.Tests.Api.Mvc.Controllers
 {

@@ -1,6 +1,6 @@
 ﻿using System.Linq.Expressions;
 
-namespace QuickSearch.Options;
+namespace QuickSearch.Pagination;
 
 public class PropertyKey : IEquatable<PropertyKey>
 {

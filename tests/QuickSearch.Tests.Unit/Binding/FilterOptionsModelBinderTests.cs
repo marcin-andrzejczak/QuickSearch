@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
-using QuickSearch.Options;
+using QuickSearch.Filter;
 
 namespace QuickSearch.Tests.Unit.Binding;
 
