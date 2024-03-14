@@ -16,7 +16,7 @@ public static class QueryableFilteringExtensions
         { FilterType.Nlike, ExpressionNotContains }
     };
 
-    public static IQueryable<TEntity> Filtered<TEntity>(
+    public static IQueryable<TEntity> Filter<TEntity>(
         this IQueryable<TEntity> query,
         FilterOptions<TEntity>? filter
     ) where TEntity : class

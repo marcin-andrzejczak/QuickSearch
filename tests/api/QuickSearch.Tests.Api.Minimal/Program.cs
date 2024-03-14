@@ -26,7 +26,7 @@ app.MapGet("/users", (AppDbContext context) =>
 ).WithName("GetUsers");
 
 app.MapGet("/users/paged", (AppDbContext context, int page, int pageSize) => 
-    context.Users.PagedAsync(new PageOptions {
+    context.Users.ToPageAsync(new PageOptions {
         Number = page,
         Size = pageSize
     })

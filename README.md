@@ -102,15 +102,15 @@ public class UsersController : ControllerBase
 
     [HttpGet("sorted")]
     public Task<List<User>> GetSorted([FromQuery(Name = "s")] SortOptions<User> request)
-        => _context.Users.Sorted(request).ToListAsync();
+        => _context.Users.Sort(request).ToListAsync();
 
     [HttpGet("filtered")]
     public Task<List<User>> GetFiltered([FromQuery(Name = "f")] FilterOptions<User> request)
-        => _context.Users.Filtered(request).ToListAsync();
+        => _context.Users.Filter(request).ToListAsync();
 
     [HttpGet("paged")]
     public Task<Page<User>> GetPaged([FromQuery(Name = "p")] PageOptions request)
-        => _context.Users.PagedAsync(request);
+        => _context.Users.ToPageAsync(request);
 }
 ```
 
@@ -124,12 +124,12 @@ public class UsersController : ControllerBase
     [HttpGet]
     public Task<Page<User>> GetUsers([FromQuery] SearchRequest request)
     {
-        var query = _context.Users.Filtered(request.Filter);
+        var query = _context.Users.Filter(request.Filter);
 
         if (request.Sort is not null)
-            query = query.Sorted(request.Sort);
+            query = query.Sort(request.Sort);
 
-        return query.PagedAsync(request.Page);
+        return query.ToPageAsync(request.Page);
     }
 }
 
@@ -237,9 +237,9 @@ public async Page<UserDTO> GetUsers(
     var userFilterOptions = filterOptions.MapTo<User>();
 
     var result = await _context.Users.Include(u => u.Account)
-        .Filtered(userFilterOptions)
-        .Sorted(userSortOptions)
-        .PagedAsync(pageOptions);
+        .Filter(userFilterOptions)
+        .Sort(userSortOptions)
+        .ToPageAsync(pageOptions);
 
     return result.MapTo(u => UserDTO.FromUser(u));
 }

@@ -4,7 +4,7 @@ namespace QuickSearch.Pagination;
 
 public static class QueryablePagingExtensions
 {
-    public static Page<TEntity> Paged<TEntity>(
+    public static Page<TEntity> ToPage<TEntity>(
         this IQueryable<TEntity> query,
         PageOptions? page
     ) where TEntity : class
@@ -26,7 +26,7 @@ public static class QueryablePagingExtensions
         );
     }
 
-    public static async Task<Page<TEntity>> PagedAsync<TEntity>(
+    public static async Task<Page<TEntity>> ToPageAsync<TEntity>(
         this IQueryable<TEntity> query,
         PageOptions? page,
         CancellationToken cancellationToken = default
