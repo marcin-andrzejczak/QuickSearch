@@ -38,9 +38,13 @@ public static class QueryablePagingExtensions
         var entities = await query
             .Skip(skipEntities)
             .Take(page.Size)
-            .ToListAsync(cancellationToken);
+            .ToListAsync(cancellationToken)
+            .ConfigureAwait(false);
 
-        var totalItems = await query.CountAsync(cancellationToken);
+        var totalItems = await query
+            .CountAsync(cancellationToken)
+            .ConfigureAwait(false);
+
         return new Page<TEntity>(
             entities,
             page.Number,
