@@ -3,8 +3,22 @@ using QuickSearch.Sort;
 
 namespace QuickSearch.Mapping;
 
-internal static class QuickSearchMapper
+internal class QuickSearchMapper
 {
+    private static object _instanceLock = new object();
+    private static QuickSearchMapper? _instance;
+    internal static QuickSearchMapper Instance
+    {
+        get
+        {
+            if (_instance is null)
+                lock (_instanceLock)
+                    _instance ??= new QuickSearchMapper();
+
+            return _instance;
+        }
+    }
+
     private static Dictionary<(Type, Type), IPropertyMap> _propertyMaps = new();
     private static bool _isInitialized = false;
 
@@ -15,7 +29,6 @@ internal static class QuickSearchMapper
             .Where(t => t.IsAssignableTo(typeof(IPropertyMap)) && !t.IsAbstract && t.IsClass)
             .ToList();
 
-        
         foreach (var propertyMapper in propertyMappers)
         {
             var mapperGenericTypes = propertyMapper.BaseType!.GetGenericArguments();
@@ -31,19 +44,19 @@ internal static class QuickSearchMapper
         _isInitialized = true;
     }
 
-    internal static void Initialize(Dictionary<(Type, Type), IPropertyMap> propertyMaps)
+    internal void Initialize(Dictionary<(Type, Type), IPropertyMap> propertyMaps)
     {
         _propertyMaps = propertyMaps;
         _isInitialized = true;
     }
 
-    internal static void EnsureInitialized()
+    internal void EnsureInitialized()
     {
         if (!_isInitialized)
             throw new InvalidOperationException($"{nameof(QuickSearch)} mapping has not been initialized properly");
     }
 
-    internal static SortOptions<TOut> MapOptions<TOut, TIn>(SortOptions<TIn> source)
+    internal SortOptions<TOut> MapOptions<TOut, TIn>(SortOptions<TIn> source)
         where TIn : class
         where TOut : class
     {
@@ -62,7 +75,7 @@ internal static class QuickSearchMapper
         return target;
     }
 
-    internal static FilterOptions<TOut> MapOptions<TOut, TIn>(FilterOptions<TIn> source)
+    internal FilterOptions<TOut> MapOptions<TOut, TIn>(FilterOptions<TIn> source)
         where TIn : class
         where TOut : class
     {

@@ -119,5 +119,5 @@ public class FilterOptions<TEntity>
 
     public FilterOptions<TResult> MapTo<TResult>()
         where TResult : class
-        => QuickSearchMapper.MapOptions<TResult, TEntity>(this);
+        => QuickSearchMapper.Instance.MapOptions<TResult, TEntity>(this);
 }
