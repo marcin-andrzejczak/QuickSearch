@@ -123,14 +123,10 @@ public class UsersController : ControllerBase
 {
     [HttpGet]
     public Task<Page<User>> GetUsers([FromQuery] SearchRequest request)
-    {
-        var query = _context.Users.Filter(request.Filter);
-
-        if (request.Sort is not null)
-            query = query.Sort(request.Sort);
-
-        return query.ToPageAsync(request.Page);
-    }
+        => _context.Users
+            .Filter(request.Filter)
+            .Sort(request.Sort)
+            .ToPageAsync(request.Page);
 }
 
 public class SearchRequest
