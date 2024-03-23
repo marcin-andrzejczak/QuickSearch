@@ -1,0 +1,32 @@
+name: Release NuGet Package
+
+inputs:
+  package-version:
+    description: 'Package Version'
+    required: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 6.0.x
+
+    - name: Restore dependencies
+      run: dotnet restore
+
+    - name: Build
+      run: dotnet build --configuration Release --no-restore
+
+    - name: Pack
+      run: dotnet pack ./src/QuickSearch/QuickSearch.csproj /p:Version=${{ inputs.package-version }} -c Release -o ./artifacts --no-build
+
+    - name: Publish
+      run: dotnet nuget push ./artifacts/QuickSearch.${{ inputs.package-version }}.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_API_KEY }}
