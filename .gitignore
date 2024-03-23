@@ -1,8 +1,11 @@
 bin/
 obj/
+TestResults/
 BenchmarkDotNet.Artifacts/
 
 notes/
+artifacts/
+coverage/
 
 .vs/
 .vscode/
