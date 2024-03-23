@@ -34,7 +34,7 @@ jobs:
       run: dotnet test --configuration Release --no-build --verbosity normal --collect "Code Coverage" --results-directory ./coverage
 
     - name: Merge Coverage Reports
-      run: dotnet-coverage merge ./coverage/**/*.coverage --output ./coverage/merged.cobertura.xml --output-format cobertura
+      run: dotnet-coverage merge ./coverage/**/*.coverage --output coverage/merged.cobertura.xml --output-format cobertura
 
     - name: Code Coverage Report
       uses: irongut/CodeCoverageSummary@v1.3.0
