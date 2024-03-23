@@ -22,14 +22,14 @@ namespace QuickSearch.Tests.Api.Mvc.Controllers
         public Task<List<User>> GetSorted([FromQuery(Name = "s")] SortOptions<User> request)
             => _context.Users
                 .Include(u => u.Account)
-                .Sorted(request)
+                .Sort(request)
                 .ToListAsync();
 
         [HttpGet("filtered")]
         public Task<List<User>> GetFiltered([FromQuery(Name = "f")] FilterOptions<User> request)
             => _context.Users
                 .Include(u => u.Account)
-                .Filtered(request)
+                .Filter(request)
                 .ToListAsync();
 
         [HttpGet("filtered/manual")]
@@ -40,7 +40,7 @@ namespace QuickSearch.Tests.Api.Mvc.Controllers
 
             return _context.Users
                 .Include(u => u.Account)
-                .Filtered(filter)
+                .Filter(filter)
                 .ToListAsync();
         }
 
@@ -48,15 +48,15 @@ namespace QuickSearch.Tests.Api.Mvc.Controllers
         public Task<Page<User>> GetPaged([FromQuery(Name = "p")] PageOptions request)
             => _context.Users
                 .Include(u => u.Account)
-                .PagedAsync(request);
+                .ToPageAsync(request);
 
         [HttpGet("complete")]
         public Task<Page<User>> GetComplete([FromQuery] SearchRequest<User> request)
             => _context.Users
                 .Include(u => u.Account)
-                .Filtered(request.Filter)
-                .Sorted(request.Sort)
-                .PagedAsync(request.Page);
+                .Filter(request.Filter)
+                .Sort(request.Sort)
+                .ToPageAsync(request.Page);
         
         [HttpGet("complete/dto")]
         public async Task<Page<UserDTO>> GetCompleteDto(
@@ -65,9 +65,9 @@ namespace QuickSearch.Tests.Api.Mvc.Controllers
         {
             var result = await _context.Users
                 .Include(u => u.Account)
-                .Filtered(request.Filter?.MapTo<User>())
-                .Sorted(request.Sort?.MapTo<User>())
-                .PagedAsync(request.Page);
+                .Filter(request.Filter?.MapTo<User>())
+                .Sort(request.Sort?.MapTo<User>())
+                .ToPageAsync(request.Page);
 
             return result.MapTo(u => UserDTO.FromUser(u));
         }

@@ -93,7 +93,7 @@ public partial class FilteringMsSqlBenchmark
             .AddFilter(u => u.FirstName, FilterType.Eq, "Adrian");
 
         return _context.Users
-            .Filtered(filter)
+            .Filter(filter)
             .ToList();
     }
 
@@ -106,7 +106,7 @@ public partial class FilteringMsSqlBenchmark
             .AddFilter(u => u.Email, FilterType.Eq, "Adrian69@gmail.com");
 
         return _context.Users
-            .Filtered(filter)
+            .Filter(filter)
             .ToList();
     }
 

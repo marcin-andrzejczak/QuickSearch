@@ -55,7 +55,7 @@ public class SortingSimpleBenchmarks
             .AddSort(u => u.FirstName, SortDirection.Asc);
 
         return _usersQuery
-            .Sorted(sort)
+            .Sort(sort)
             .ToList();
     }
 
@@ -68,7 +68,7 @@ public class SortingSimpleBenchmarks
             .AddSort(u => u.JobTitle, SortDirection.Asc);
 
         return _usersQuery
-            .Sorted(sort)
+            .Sort(sort)
             .ToList();
     }
 }

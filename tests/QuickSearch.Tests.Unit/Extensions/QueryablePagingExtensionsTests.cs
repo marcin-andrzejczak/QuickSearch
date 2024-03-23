@@ -46,7 +46,7 @@ public class QueryablePagingExtensionsTests
         };
 
         // Act
-        var result = usersQuery.Paged(pageOptions);
+        var result = usersQuery.ToPage(pageOptions);
 
         // Assert
         Assert.NotNull(result);
@@ -73,7 +73,7 @@ public class QueryablePagingExtensionsTests
             .AsQueryable();
 
         // Act
-        var result = usersQuery.Paged(null);
+        var result = usersQuery.ToPage(null);
 
         // Assert
         Assert.NotNull(result);
@@ -116,7 +116,7 @@ public class QueryablePagingExtensionsTests
         };
 
         // Act
-        var result = await users.PagedAsync(pageOptions);
+        var result = await users.ToPageAsync(pageOptions);
 
         // Assert
         Assert.NotNull(result);
@@ -143,7 +143,7 @@ public class QueryablePagingExtensionsTests
             .BuildMock();
 
         // Act
-        var result = await usersQuery.PagedAsync(null);
+        var result = await usersQuery.ToPageAsync(null);
 
         // Assert
         Assert.NotNull(result);

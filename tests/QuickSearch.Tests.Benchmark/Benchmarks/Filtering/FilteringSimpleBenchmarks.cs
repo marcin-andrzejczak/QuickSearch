@@ -68,7 +68,7 @@ public class FilteringSimpleBenchmarks
             .AddFilter(u => u.FirstName, FilterType.Eq, "Adrian");
 
         return _usersQuery
-            .Filtered(filter)
+            .Filter(filter)
             .ToList();
     }
 
@@ -81,7 +81,7 @@ public class FilteringSimpleBenchmarks
             .AddFilter(u => u.Email, FilterType.Eq, "Adrian69@gmail.com");
 
         return _usersQuery
-            .Filtered(filter)
+            .Filter(filter)
             .ToList();
     }
 

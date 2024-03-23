@@ -4,7 +4,7 @@ namespace QuickSearch.Sort;
 
 public static class QueryableSortingExtensions
 {
-    public static IOrderedQueryable<TEntity> Sorted<TEntity>(
+    public static IOrderedQueryable<TEntity> Sort<TEntity>(
         this IQueryable<TEntity> query,
         SortOptions<TEntity>? sort
     ) where TEntity : class

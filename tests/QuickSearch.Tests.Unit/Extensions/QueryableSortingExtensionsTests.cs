@@ -48,7 +48,7 @@ public class QueryableSortingExtensionsTests
             .AddSort(u => u.Account!.BalanceNullable, SortDirection.Desc);
 
         // Act
-        var result = _users.Sorted(sortOptions).ToList();
+        var result = _users.Sort(sortOptions).ToList();
 
         // Assert
         Assert.NotEmpty(result);
@@ -72,7 +72,7 @@ public class QueryableSortingExtensionsTests
             .AddSort(u => u.Account!.BalanceNullable, SortDirection.Asc);
 
         // Act
-        var result = _users.Sorted(sortOptions).ToList();
+        var result = _users.Sort(sortOptions).ToList();
 
         // Assert
         Assert.NotEmpty(result);
@@ -86,7 +86,7 @@ public class QueryableSortingExtensionsTests
     public void Sorted_NullSortOptionsPassed_ReturnsUnchangedOrderedQuery()
     {
         // Act
-        var result = _users.Sorted(null);
+        var result = _users.Sort(null);
 
         // Assert
         Assert.NotEmpty(result);
@@ -106,7 +106,7 @@ public class QueryableSortingExtensionsTests
             .AddSort(u => u.Account!.BalanceNullable, SortDirection.None);
 
         // Act
-        var result = _users.Sorted(sortOptions);
+        var result = _users.Sort(sortOptions);
 
         // Assert
         Assert.NotEmpty(result);

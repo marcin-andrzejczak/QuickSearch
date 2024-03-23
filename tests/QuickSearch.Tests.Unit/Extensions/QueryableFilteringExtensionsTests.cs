@@ -69,7 +69,7 @@ public class QueryableFilteringExtensionsTests
             .AddFilter(u => u.FirstName, FilterType.Eq, name);
 
         // Act
-        var result = _users.Filtered(filter).ToList();
+        var result = _users.Filter(filter).ToList();
 
         // Assert
         Assert.NotEmpty(result);
@@ -94,7 +94,7 @@ public class QueryableFilteringExtensionsTests
             .AddFilter(u => u.Account!.BalanceNullable, FilterType.Eq, balance);
 
         // Act
-        var result = _users.Filtered(filter).ToList();
+        var result = _users.Filter(filter).ToList();
 
         // Assert
         Assert.NotEmpty(result);
@@ -108,7 +108,7 @@ public class QueryableFilteringExtensionsTests
     public void Filtered_NullFilterOptionsPassed_ReturnsUnchangedQuery()
     {
         // Act
-        var result = _users.Filtered(null);
+        var result = _users.Filter(null);
 
         // Assert
         Assert.NotEmpty(result);
@@ -127,7 +127,7 @@ public class QueryableFilteringExtensionsTests
             .AddFilter(u => u.FirstName, FilterType.None, _faker.Random.Guid().ToString());
 
         // Act
-        var result = _users.Filtered(filter);
+        var result = _users.Filter(filter);
 
         // Assert
         Assert.NotEmpty(result);
@@ -152,7 +152,7 @@ public class QueryableFilteringExtensionsTests
             .AddFilter(u => u.BalanceNullable, FilterType.Eq, null);
 
         // Act
-        var result = accounts.AsQueryable().Filtered(filter).ToList();
+        var result = accounts.AsQueryable().Filter(filter).ToList();
 
         // Assert
         Assert.NotEmpty(result);
@@ -176,7 +176,7 @@ public class QueryableFilteringExtensionsTests
             .AddFilter(u => u.BalanceNonNullable, FilterType.Lt, 51);
 
         // Act
-        var result = accounts.AsQueryable().Filtered(filter).ToList();
+        var result = accounts.AsQueryable().Filter(filter).ToList();
 
         // Assert
         Assert.NotEmpty(result);
@@ -201,7 +201,7 @@ public class QueryableFilteringExtensionsTests
             .AddFilter(u => u.BalanceNonNullable, FilterType.Eq, 51);
 
         // Act
-        var result = accounts.AsQueryable().Filtered(filter).ToList();
+        var result = accounts.AsQueryable().Filter(filter).ToList();
 
         // Assert
         Assert.NotEmpty(result);
@@ -230,7 +230,7 @@ public class QueryableFilteringExtensionsTests
             .AddFilter(u => u.BalanceNonNullable, FilterType.Lt, filterValue);
 
         // Act
-        var result = accounts.AsQueryable().Filtered(filter).ToList();
+        var result = accounts.AsQueryable().Filter(filter).ToList();
 
         // Assert
         Assert.NotEmpty(result);
@@ -255,7 +255,7 @@ public class QueryableFilteringExtensionsTests
             .AddFilter(u => u.BalanceNonNullable, FilterType.Lte, filterValue);
 
         // Act
-        var result = accounts.AsQueryable().Filtered(filter).ToList();
+        var result = accounts.AsQueryable().Filter(filter).ToList();
 
         // Assert
         Assert.NotEmpty(result);
@@ -280,7 +280,7 @@ public class QueryableFilteringExtensionsTests
             .AddFilter(u => u.BalanceNonNullable, FilterType.Gt, filterValue);
 
         // Act
-        var result = accounts.AsQueryable().Filtered(filter).ToList();
+        var result = accounts.AsQueryable().Filter(filter).ToList();
 
         // Assert
         Assert.NotEmpty(result);
@@ -305,7 +305,7 @@ public class QueryableFilteringExtensionsTests
             .AddFilter(u => u.BalanceNonNullable, FilterType.Gte, filterValue);
 
         // Act
-        var result = accounts.AsQueryable().Filtered(filter).ToList();
+        var result = accounts.AsQueryable().Filter(filter).ToList();
 
         // Assert
         Assert.NotEmpty(result);
@@ -329,7 +329,7 @@ public class QueryableFilteringExtensionsTests
             .AddFilter(u => u.BalanceNonNullable, FilterType.Eq, filterValue);
 
         // Act
-        var result = accounts.AsQueryable().Filtered(filter).ToList();
+        var result = accounts.AsQueryable().Filter(filter).ToList();
 
         // Assert
         Assert.NotEmpty(result);
@@ -354,7 +354,7 @@ public class QueryableFilteringExtensionsTests
             .AddFilter(u => u.BalanceNonNullable, FilterType.Neq, filterValue);
 
         // Act
-        var result = accounts.AsQueryable().Filtered(filter).ToList();
+        var result = accounts.AsQueryable().Filter(filter).ToList();
 
         // Assert
         Assert.NotEmpty(result);
@@ -379,7 +379,7 @@ public class QueryableFilteringExtensionsTests
             .AddFilter(u => u.FirstName, FilterType.Like, filterValue.ToString());
 
         // Act
-        var result = accounts.AsQueryable().Filtered(filter).ToList();
+        var result = accounts.AsQueryable().Filter(filter).ToList();
 
         // Assert
         Assert.NotEmpty(result);
@@ -405,7 +405,7 @@ public class QueryableFilteringExtensionsTests
             .AddFilter(u => u.FirstName, FilterType.Nlike, filterValue.ToString());
 
         // Act
-        var result = accounts.AsQueryable().Filtered(filter).ToList();
+        var result = accounts.AsQueryable().Filter(filter).ToList();
 
         // Assert
         Assert.NotEmpty(result);
