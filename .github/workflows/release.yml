@@ -1,9 +1,11 @@
 name: Release NuGet Package
 
-inputs:
-  package-version:
-    description: 'Package Version'
-    required: true
+on:
+  workflow_dispatch:
+    inputs:
+      package-version:
+        description: 'Package Version'
+        required: true
 
 jobs:
   build:
