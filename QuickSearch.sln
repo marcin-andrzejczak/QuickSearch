@@ -19,7 +19,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{5E990BC3
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuickSearch.Tests.Unit", "tests\QuickSearch.Tests.Unit\QuickSearch.Tests.Unit.csproj", "{290E15BC-D34B-4F80-A465-6DFF7CEAAB09}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuickSearch.Tests.Integration.Mvc", "tests\QuickSearch.Tests.Integration.Mvc\QuickSearch.Tests.Integration.Mvc.csproj", "{687C5D23-D8A6-43AD-85B5-81DB5BDC2987}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuickSearch.Tests.Integration.Mvc", "tests\QuickSearch.Tests.Integration.Mvc\QuickSearch.Tests.Integration.Mvc.csproj", "{687C5D23-D8A6-43AD-85B5-81DB5BDC2987}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuickSearch.Extensions.Swashbuckle", "src\QuickSearch.Extensions.Swashbuckle\QuickSearch.Extensions.Swashbuckle.csproj", "{247303BC-A806-4610-B3C1-89721BDEB15C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,6 +57,10 @@ Global
 		{687C5D23-D8A6-43AD-85B5-81DB5BDC2987}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{687C5D23-D8A6-43AD-85B5-81DB5BDC2987}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{687C5D23-D8A6-43AD-85B5-81DB5BDC2987}.Release|Any CPU.Build.0 = Release|Any CPU
+		{247303BC-A806-4610-B3C1-89721BDEB15C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{247303BC-A806-4610-B3C1-89721BDEB15C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{247303BC-A806-4610-B3C1-89721BDEB15C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{247303BC-A806-4610-B3C1-89721BDEB15C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

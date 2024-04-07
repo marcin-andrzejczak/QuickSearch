@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\src\QuickSearch.Extensions.Swashbuckle\QuickSearch.Extensions.Swashbuckle.csproj" />
     <ProjectReference Include="..\..\..\src\QuickSearch\QuickSearch.csproj" />
     <ProjectReference Include="..\QuickSearch.Tests.Api.Common\QuickSearch.Tests.Api.Common.csproj" />
   </ItemGroup>

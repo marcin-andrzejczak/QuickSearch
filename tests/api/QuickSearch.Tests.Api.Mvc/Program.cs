@@ -1,12 +1,16 @@
 using QuickSearch.Setup;
 using QuickSearch.Tests.Api.Common.Data;
 using Microsoft.EntityFrameworkCore;
+using QuickSearch.Extensions.Swashbuckle;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen(o => o.DescribeAllParametersInCamelCase());
+builder.Services.AddSwaggerGen(options => {
+    options.DescribeAllParametersInCamelCase();
+    options.AddQuickSearch();
+});
 builder.Services.AddDbContext<AppDbContext>(
     o => o.UseInMemoryDatabase("paged-mvc-db"),
     ServiceLifetime.Transient,
@@ -24,10 +28,12 @@ if (!bool.TryParse(app.Configuration["DISABLE_SEED"], out var disableSeed) || !d
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(options =>
+    {
+        options.AddQuickSearch();
+    });
 }
 
-app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
 app.Run();
