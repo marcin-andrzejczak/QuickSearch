@@ -8,10 +8,6 @@
       "high": 80,
       "low": 70,
       "break": 60
-    },
-    "since": {
-      "enabled": true,
-      "target": "main"
     }
   }
 }
