@@ -10,6 +10,7 @@ using QuickSearch.Pagination;
 
 namespace QuickSearch.Tests.Integration.Mvc.Controllers;
 
+[Collection(nameof(SharedTestCollection))]
 public class UserControllerTests : IClassFixture<WebApplicationFactory<Program>>
 {
     private readonly HttpClient _client;
