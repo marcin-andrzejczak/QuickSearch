@@ -1,0 +1,12 @@
+{
+  "stryker-config": {
+    "reporters": [
+      "progress",
+      "html"
+    ],
+    "since": {
+      "enabled": true,
+      "target": "feature/stryker-test"
+    }
+  }
+}
